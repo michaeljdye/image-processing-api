@@ -6,6 +6,8 @@
   "scripts": {
     "start": "nodemon --exec ts-node src/index.ts",
     "build": "npx tsc",
+    "lint": "eslint src/**/*.{js,ts}",
+    "format": "prettier --write src/**/*.{js,ts}",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,8 +28,13 @@
     "@types/jasmine": "^4.3.1",
     "@types/node": "^18.15.11",
     "eslint": "^8.37.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "jasmine": "^4.6.0",
     "jasmine-spec-reporter": "^7.0.0",
     "nodemon": "^2.0.22",
