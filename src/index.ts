@@ -2,9 +2,9 @@ import express from 'express';
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+import image from './routes/image';
+
+app.use('/api/image', image);
 
 const PORT = process.env.PORT || 3000;
 
