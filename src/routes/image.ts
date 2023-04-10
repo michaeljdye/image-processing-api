@@ -1,8 +1,8 @@
 import express from 'express';
+import { resizeImage } from '../controllers/image';
+
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+router.get('/', resizeImage);
 
 export default router;
