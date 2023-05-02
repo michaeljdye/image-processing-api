@@ -5,28 +5,25 @@ import { promises as fs } from 'fs';
 
 export const resizeImage = async (req: Request, res: Response) => {
   const { width = 200, height = 100, filename = 'mountain' } = req.query;
+  const thumbPath = path.resolve(`src/assets/images/thumb/${String(filename)}_thumb_${String(width)}_${String(height)}.jpg`);
 
   try {
-    const thumbImage = await fs.readFile(`src/assets/images/thumb/${String(filename)}_thumb_${String(width)}_${String(height)}.jpg`);
+    const thumbImage = await fs.readFile(thumbPath);
 
     if (thumbImage) {
-      const imagePath = path.resolve(`src/assets/images/thumb/${String(filename)}_${String(width)}}_${String(height)}`);
-      res.sendFile(imagePath);
-     return
+      res.sendFile(thumbPath);
     }
-    
   } catch (errorIfThumbImageNotFound) {
     try {
-      const image = await fs.readFile(`src/assets/images/full/${String(filename)}.jpg`);
+      const imagePath = path.resolve(`src/assets/images/full/${String(filename)}.jpg`);
+      const image = await fs.readFile(imagePath);
 
       sharp(image)
         .resize(+height, +width)
-        .toFile(`src/assets/images/thumb/${String(filename)}_thumb_${String(width)}_${String(height)}.jpg`)
-        .then(() => {
-          const imagePath = path.resolve(`src/assets/images/thumb/${String(filename)}_${String(width)}}_${String(height)}`);
-          
+        .toFile(thumbPath)
+        .then(() => {          
           res.setHeader('Content-Type', 'image/png');
-          res.sendFile(imagePath);
+          res.sendFile(thumbPath);
         });
       
     } catch (errorIfImageNotFound) {
