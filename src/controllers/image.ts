@@ -1,7 +1,7 @@
 import path from 'path';
 import { Request, Response } from 'express';
-import { promises as fs } from 'fs';
-import { resizeImage } from '../helpers/image-processing';
+import fs from 'fs/promises';
+import { resizeImage } from '../utils/image-processing';
 
 export const processImage = async (req: Request, res: Response) => {
   const { width = 200, height = 100, filename = 'mountain' } = req.query;
