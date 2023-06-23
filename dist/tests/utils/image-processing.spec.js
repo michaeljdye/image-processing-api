@@ -63,4 +63,24 @@ describe('resizeImage', function () {
             }
         });
     }); });
+    it('should return correct error when unable to resize image', function () { return __awaiter(void 0, void 0, void 0, function () {
+        var imagePath, image, height, width, thumbPath, result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    imagePath = path_1.default.resolve("src/assets/images/full/mountain.jpg");
+                    return [4 /*yield*/, promises_1.default.readFile(imagePath)];
+                case 1:
+                    image = _a.sent();
+                    height = 200;
+                    width = 100;
+                    thumbPath = '';
+                    return [4 /*yield*/, (0, image_processing_1.resizeImage)(image, height, width, thumbPath)];
+                case 2:
+                    result = _a.sent();
+                    expect(result).toEqual('Error resizing image');
+                    return [2 /*return*/];
+            }
+        });
+    }); });
 });
