@@ -1,6 +1,6 @@
 // Import necessary dependencies and modules
 const request = require('supertest');
-const app = require('../app'); // Assuming your app is defined in a separate file called 'app.js'
+const app = require('../../index'); // Assuming your app is defined in a separate file called 'app.js'
 
 describe('Image Processing API', () => {
   describe('GET /image', () => {
@@ -20,7 +20,7 @@ describe('Image Processing API', () => {
 
       expect(response.status).toBe(500);
       expect(response.text).toBe(
-        'Error message indicating the image was not resized'
+        'Error message indicating the image was not resized',
       );
     });
 

@@ -1,10 +1,10 @@
 import sharp from 'sharp';
 
-export const resizeImage = async (
+export default async (
   image: Buffer,
   height: number,
   width: number,
-  thumbPath: string
+  thumbPath: string,
 ): Promise<string> => {
   try {
     await sharp(image).resize(height, width).toFile(thumbPath);
