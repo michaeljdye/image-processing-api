@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs/promises';
 import resizeImage from '../../utils/image-processing';
 
-describe('resizeImage', () => {
+describe('Image Processing Utils', () => {
   it('should resize an image', async () => {
     const imagePath = path.resolve('src/assets/images/full/mountain.jpg');
     const image = await fs.readFile(imagePath);
@@ -14,6 +14,7 @@ describe('resizeImage', () => {
       )}.jpg`,
     );
     const result = await resizeImage(image, height, width, thumbPath);
+
     expect(result).toEqual('Success');
   });
 
@@ -24,6 +25,7 @@ describe('resizeImage', () => {
     const width = 100;
     const thumbPath = '';
     const result = await resizeImage(image, height, width, thumbPath);
+
     expect(result).toEqual('Error resizing image');
   });
 });

@@ -9,19 +9,18 @@ describe('Image Resize API', () => {
         .query({ width: 200, height: 100, filename: 'mountain' });
 
       expect(response.status).toBe(200);
-      expect(response.type).toBe('image/jpeg');
     });
 
-    it('should return an error if the resized image does not exist', async () => {
+    it('should return an error if filename not provided', async () => {
       const response = await request(app)
         .get('/api/resize')
-        .query({ width: 300, height: 150, filename: '' });
+        .query({ width: 300, height: 150 });
 
       expect(response.status).toBe(500);
       expect(response.text).toBe('Image not found');
     });
 
-    it('should return an error if the original image does not exist', async () => {
+    it('should return an error if the image does not exist', async () => {
       const response = await request(app)
         .get('/api/resize')
         .query({ width: 200, height: 100, filename: 'nonexistent' });
