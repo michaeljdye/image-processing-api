@@ -1,8 +1,8 @@
 import express from 'express';
-import { processImage } from '../controllers/image';
+import resizeImage from '../controllers/resize-image';
 
 const router = express.Router();
 
-router.get('/', processImage);
+router.get('/', resizeImage);
 
 export default router;

@@ -39,9 +39,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.resizeImage = void 0;
 var sharp_1 = __importDefault(require("sharp"));
-var resizeImage = function (image, height, width, thumbPath) { return __awaiter(void 0, void 0, void 0, function () {
+exports.default = (function (image, height, width, thumbPath) { return __awaiter(void 0, void 0, void 0, function () {
     var error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -57,5 +56,4 @@ var resizeImage = function (image, height, width, thumbPath) { return __awaiter(
             case 3: return [2 /*return*/];
         }
     });
-}); };
-exports.resizeImage = resizeImage;
+}); });

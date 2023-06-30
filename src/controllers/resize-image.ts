@@ -1,10 +1,16 @@
 import path from 'path';
 import { Request, Response } from 'express';
 import fs from 'fs/promises';
-import { resizeImage } from '../utils/image-processing';
+import resize from '../utils/image-processing';
 
 export default async (req: Request, res: Response) => {
-  const { width = 200, height = 100, filename = 'mountain' } = req.query;
+  const { width = 200, height = 100, filename } = req.query;
+
+  if (!filename) {
+    res.status(500).send('Image not found');
+    return;
+  }
+
   const thumbPath = path.resolve(
     `src/assets/images/thumb/${String(filename)}_thumb_${String(
       width,
@@ -24,7 +30,7 @@ export default async (req: Request, res: Response) => {
       );
       const image = await fs.readFile(imagePath);
 
-      const message = await resizeImage(image, +width, +height, thumbPath);
+      const message = await resize(image, +width, +height, thumbPath);
 
       if (message === 'Success') {
         res.contentType('image/jpg').sendFile(thumbPath);

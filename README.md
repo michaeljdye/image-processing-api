@@ -14,7 +14,7 @@ This repository contains an Image Processing API built using React, TypeScript, 
 1. Clone the repository to your local machine:
 
    ```shell
-   git clone https://github.com/your-username/image-processing-api.git
+   git clone https://github.com/michaeljdye/image-processing-api
    ```
 
 2. Navigate to the project directory:
@@ -43,17 +43,25 @@ This repository contains an Image Processing API built using React, TypeScript, 
 
    The API accepts the following parameters:
 
-   - `image`: The image endpoint URL.
+   - `image`: The image file name.
    - `width` (optional): The preferred width of the resized image.
    - `height` (optional): The preferred height of the resized image.
 
    An example request URL would look like:
 
    ```
-   http://localhost:3000/api/resize?image=https://example.com/image.jpg&width=800&height=600
+   http://localhost:3000/api/resize?image=mountain&width=800&height=600
    ```
 
-   Replace `https://example.com/image.jpg` with the URL of the image you want to resize, and `800` and `600` with your desired width and height, respectively.
+   Replace `mountain` with the URL of the image you want to resize, and `800` and `600` with your desired width and height, respectively.
+
+3. When ready to deploy, run:
+
+```
+npm run build
+```
+
+Compiled files can be found in the dist folder.
 
 ## Code Formatting and Linting
 
@@ -84,11 +92,11 @@ npm test
 
 The test suite will execute and provide feedback on the test results and code coverage.
 
+- Note that you will need run build command prior to testing.
+
 ## Contributions
 
 Contributions to this project are welcome. If you encounter any issues or have suggestions for improvements, please open an issue or submit a pull request.
-
-Before contributing, make sure to familiarize yourself with the [contribution guidelines](CONTRIBUTING.md).
 
 ## License
 

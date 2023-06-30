@@ -1,12 +1,11 @@
-// Import necessary dependencies and modules
-const request = require('supertest');
-const app = require('../../index'); // Assuming your app is defined in a separate file called 'app.js'
+import request from 'supertest';
+import app from '../../index';
 
-describe('Image Processing API', () => {
-  describe('GET /image', () => {
+describe('Image Resize API', () => {
+  describe('GET /api/resize', () => {
     it('should return the resized image if it exists', async () => {
       const response = await request(app)
-        .get('/image')
+        .get('/api/resize')
         .query({ width: 200, height: 100, filename: 'mountain' });
 
       expect(response.status).toBe(200);
@@ -15,18 +14,16 @@ describe('Image Processing API', () => {
 
     it('should return an error if the resized image does not exist', async () => {
       const response = await request(app)
-        .get('/image')
-        .query({ width: 300, height: 150, filename: 'mountain' });
+        .get('/api/resize')
+        .query({ width: 300, height: 150, filename: '' });
 
       expect(response.status).toBe(500);
-      expect(response.text).toBe(
-        'Error message indicating the image was not resized',
-      );
+      expect(response.text).toBe('Image not found');
     });
 
     it('should return an error if the original image does not exist', async () => {
       const response = await request(app)
-        .get('/image')
+        .get('/api/resize')
         .query({ width: 200, height: 100, filename: 'nonexistent' });
 
       expect(response.status).toBe(404);

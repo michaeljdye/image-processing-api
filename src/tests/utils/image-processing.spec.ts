@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs/promises';
-import { resizeImage } from '../../utils/image-processing';
+import resizeImage from '../../utils/image-processing';
 
 describe('resizeImage', () => {
   it('should resize an image', async () => {
