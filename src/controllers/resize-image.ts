@@ -6,12 +6,17 @@ import resize from '../utils/image-processing';
 export default async (req: Request, res: Response) => {
   const { width, height, filename } = req.query;
 
-  if (!filename) {
+  if (!filename || typeof filename !== 'string') {
     res.status(500).send('Please provide a valid filename.');
     return;
   }
 
-  if (!width || !height) {
+  if (
+    !width ||
+    !height ||
+    Number.isNaN(Number(width)) ||
+    Number.isNaN(Number(height))
+  ) {
     res.status(500).send('Please provide valid width and height.');
     return;
   }
