@@ -6,7 +6,7 @@ import resize from '../utils/image-processing';
 export default async (req: Request, res: Response) => {
   const { width, height, filename } = req.query;
 
-  if (!filename || typeof filename !== 'string') {
+  if (!filename) {
     res.status(500).send('Please provide a valid filename.');
     return;
   }
