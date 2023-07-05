@@ -42,19 +42,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var path_1 = __importDefault(require("path"));
 var promises_1 = __importDefault(require("fs/promises"));
 var image_processing_1 = __importDefault(require("../../utils/image-processing"));
-describe('resizeImage', function () {
+describe('Image Processing Utils', function () {
     it('should resize an image', function () { return __awaiter(void 0, void 0, void 0, function () {
         var imagePath, image, height, width, thumbPath, result;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    imagePath = path_1.default.resolve('src/assets/images/full/mountain.jpg');
+                    imagePath = path_1.default.resolve(path_1.default.join('assets/images/full', 'mountain.jpg'));
                     return [4 /*yield*/, promises_1.default.readFile(imagePath)];
                 case 1:
                     image = _a.sent();
                     height = 200;
                     width = 100;
-                    thumbPath = path_1.default.resolve("src/assets/images/thumb/mountain_thumb_".concat(String(width), "_").concat(String(height), ".jpg"));
+                    thumbPath = path_1.default.join('assets/images/thumb', "mountain_thumb_".concat(String(width), "_").concat(String(height), ".jpg"));
                     return [4 /*yield*/, (0, image_processing_1.default)(image, height, width, thumbPath)];
                 case 2:
                     result = _a.sent();
@@ -68,7 +68,7 @@ describe('resizeImage', function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    imagePath = path_1.default.resolve('src/assets/images/full/mountain.jpg');
+                    imagePath = path_1.default.resolve(path_1.default.join('assets/images/full', 'mountain.jpg'));
                     return [4 /*yield*/, promises_1.default.readFile(imagePath)];
                 case 1:
                     image = _a.sent();

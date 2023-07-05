@@ -17,7 +17,7 @@ describe('Image Resize API', () => {
         .query({ width: 300, height: 150 });
 
       expect(response.status).toBe(500);
-      expect(response.text).toBe('Image not found');
+      expect(response.text).toBe('Please provide a valid filename.');
     });
 
     it('should return an error if the image does not exist', async () => {
@@ -26,7 +26,7 @@ describe('Image Resize API', () => {
         .query({ width: 200, height: 100, filename: 'nonexistent' });
 
       expect(response.status).toBe(404);
-      expect(response.text).toBe('Image not found');
+      expect(response.text).toBe('File not found.');
     });
   });
 });

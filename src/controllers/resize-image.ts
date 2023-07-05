@@ -22,9 +22,10 @@ export default async (req: Request, res: Response) => {
   }
 
   const thumbPath = path.resolve(
-    `src/assets/images/thumb/${String(filename)}_thumb_${String(
-      width,
-    )}_${String(height)}.jpg`,
+    path.join(
+      'assets/images/thumb',
+      `${String(filename)}_thumb_${String(width)}_${String(height)}.jpg`,
+    ),
   );
 
   try {
@@ -36,7 +37,7 @@ export default async (req: Request, res: Response) => {
   } catch (errorIfThumbImageNotFound) {
     try {
       const imagePath = path.resolve(
-        `src/assets/images/full/${String(filename)}.jpg`,
+        path.join('assets/images/full', `${String(filename)}.jpg`),
       );
       const image = await fs.readFile(imagePath);
 
