@@ -4,10 +4,15 @@ import fs from 'fs/promises';
 import resize from '../utils/image-processing';
 
 export default async (req: Request, res: Response) => {
-  const { width = 200, height = 100, filename } = req.query;
+  const { width, height, filename } = req.query;
 
   if (!filename) {
-    res.status(500).send('Image not found');
+    res.status(500).send('Please provide a valid filename.');
+    return;
+  }
+
+  if (!width || !height) {
+    res.status(500).send('Please provide valid width and height.');
     return;
   }
 
@@ -38,7 +43,7 @@ export default async (req: Request, res: Response) => {
         res.status(500).send(message);
       }
     } catch (errorIfImageNotFound) {
-      res.status(404).send('Image not found');
+      res.status(404).send('File not found.');
     }
   }
 };
